@@ -245,7 +245,22 @@
                             </div>
                         </div>
                     </div>
-                    
+
+                    <!-- Kipas Angin  -->
+                   
+                        <div class="col-md-6" data-aos="fade-up">
+                            <div class="card-custom rounded-4 bg-base shadow-effect">
+                                <div class="card-custom-image rounded-4">
+                                    <img id="fanImage" class="rounded-4" src="./assets/images/kipas-gerak.gif" alt="Fan">
+                                </div>
+                                <div class="card-custom-content p-4 text-center">
+                                    <h4>Kontrol Kipas</h4>
+                                    <p>Nyalakan atau matikan kipas menggunakan tombol di bawah ini.</p>
+                                    <button id="fanToggleButton" class="btn btn-primary" onclick="toggleFan()">Nyalakan</button>
+                                </div>
+                            </div>
+                        </div>
+                                            
                     <!-- Modal for Temperature Conversion -->
                     <div class="modal fade" id="temperatureConversionModal" tabindex="-1" aria-labelledby="temperatureConversionModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -1048,6 +1063,35 @@
     function formatRupiah(angka) {
         return angka.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }).replace("IDR", "Rp ");
     }
+
+
+        // Kipas
+            // Variabel untuk status kipas
+    let isFanOn = false;
+
+    // Fungsi untuk toggle kipas
+    function toggleFan() {
+        const fanImage = document.getElementById('fanImage');
+        const fanToggleButton = document.getElementById('fanToggleButton');
+
+        if (isFanOn) {
+            // Matikan kipas
+            fanImage.src = './assets/images/kipas-off.png'; // Ganti dengan gambar kipas mati
+            fanToggleButton.textContent = 'Nyalakan';
+            fanToggleButton.classList.remove('btn-danger');
+            fanToggleButton.classList.add('btn-primary');
+        } else {
+            // Nyalakan kipas
+            fanImage.src = './assets/images/kipas-gerak.gif'; // Ganti dengan gambar kipas berputar (gif animasi)
+            fanToggleButton.textContent = 'Matikan';
+            fanToggleButton.classList.remove('btn-primary');
+            fanToggleButton.classList.add('btn-danger');
+        }
+
+        // Toggle status kipas
+        isFanOn = !isFanOn;
+    }
+
     </script>
 </body>
 
